@@ -1,0 +1,57 @@
+﻿@using TicariOtomasyon.Models.Classes
+
+@model List<Urun>
+ 
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+@using(Html.BeginForm("Index","Urun", FormMethod.Get))
+{
+    <p>
+        Ürün Adı: @Html.TextBox("p")
+        <input type="submit" value="Ara"/>
+    </p>
+}
+<br />
+<table class="table table-bordered">
+    <tr>
+
+        <th>Ürün</th>
+        <th>Marka</th>
+        <th>Stok</th>
+        <th>Alış Fiyat</th>
+        <th>Satış Fiyat</th>
+        <th>Kategori</th>
+
+        <th>Sil</th>
+        <th>Güncelle</th>
+        <th>Satış Yap</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+<tr>
+
+    <td>@item.UrunAd </td>
+    <td>@item.Marka </td>
+    <td>@item.Stok </td>
+    <td>@item.AlisFiyat </td>
+    <td>@item.SatisFiyat </td>
+    <td>@item.Kategori.KategoriAd</td>
+
+    <td><a href="/Urun/UrunSil/@item.UrunId" class="btn btn-danger">Sil</a></td>
+    <td><a href="/Urun/UrunGetir/@item.UrunId" class="btn btn-success">Güncelle</a></td>
+    <td><a href="/Urun/SatisYap/@item.UrunId" class="btn btn-success">Satış Yap</a></td>
+
+</tr>
+    }
+
+</table>
+
+
+
+
+
+<a href="/Urun/YeniUrun" class="btn btn-info">Yeni Ürün</a>

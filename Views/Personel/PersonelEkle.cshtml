@@ -1,0 +1,25 @@
+﻿@model TicariOtomasyon.Models.Classes.Personel
+@{
+    ViewBag.Title = "PersonelEkle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h2>Personel Ekleme Sayfası</h2>
+<br />
+<form class="form-group" enctype="multipart/form-data" method="post">
+    @Html.LabelFor(x=>x.PersonelAd)
+    @Html.TextBoxFor(x=>x.PersonelAd,new {@class="form-control" })
+    <br />
+    @Html.Label("Soyad ")
+    @Html.TextBoxFor(x=>x.PersonelSoyad,new {@class="form-control" })
+    <br />
+    @Html.Label("Gorsel ")
+   <input type="file" name="PersonelGorsel"/>
+    <br />
+    @Html.Label("Departman ")
+    @Html.DropDownListFor(x=>x.DepartmanId,(List<SelectListItem>)ViewBag.Value,new {@class="form-control" })
+
+    <br />
+    <button class="btn btn-primary">Ekle</button>
+</form>
+

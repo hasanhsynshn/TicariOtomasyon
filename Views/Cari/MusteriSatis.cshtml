@@ -1,0 +1,41 @@
+﻿@model List<TicariOtomasyon.Models.Classes.SatisHareket>
+@{
+    ViewBag.Title = "MusteriSatis";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h2>Departman Personel Satis</h2>
+<br />
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Cari Adı: @ViewBag.cari</li>
+
+
+</ol>
+<table class="table table-condensed">
+
+    <tr>
+        <th>Satış ID</th>
+        <th>Ürün</th>
+        <th>Personel</th>
+        <th>Fiyat</th>
+        <th>Adet</th>
+        <th>Toplam</th>
+        <th>Tarih</th>
+        <th>Yazdır</th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+
+        <tr>
+            <td>@item.SatisId</td>
+            <td>@item.Urunlers.UrunAd</td>
+            <td>@item.Personels.PersonelAd @item.Personels.PersonelSoyad</td>
+            <td>@item.Fiyat</td>
+            <td>@item.Adet</td>
+            <td>@item.ToplamTutar</td>
+            <td>@item.Tarih</td>
+            <td><a href="/Cari/MusteriSatis/@item.CariId" class="btn btn-default" style="background-color:darkcyan">Yazdır</a></td>
+        </tr>
+    }
+</table>

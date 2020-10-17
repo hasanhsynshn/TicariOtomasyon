@@ -1,0 +1,85 @@
+﻿@model List<TicariOtomasyon.Models.Classes.Faturalar>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<br />
+<h3>Fatura Detay Sayfası</h3>
+<br />
+
+<table class="table table-bordered">
+    <tr>
+
+        <th>Seri No</th>
+        <th>Sıra No</th>
+        <th>Vergi Dairesi</th>
+        <th>Tarih</th>
+        <th>Saat</th>
+        <th>Toplam</th>
+        <th>Teslim Eden</th>
+        <th>Teslim Alan</th>
+        <th>Güncelle</th>
+        <th>Detaylar</th>
+        
+        <th>Yeni Kalem</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+<tr>
+
+    <td>@item.FaturaSeriNo </td>
+    <td>@item.FaturaSıraNo </td>
+    <td>@item.VergiDairesi </td>
+    <td>@item.Tarih </td>
+    <td>@item.Saat </td>
+    <td>@item.Toplam</td>
+    <td>@item.TeslimEden </td>
+    <td>@item.TeslimAlan </td>
+    <td><a href="/Fatura/FaturaGetir/@item.FaturaId" class="btn btn-warning" style="color:white">Güncelle</a></td>
+    <td><a href="/Fatura/FaturaDetay/@item.FaturaId" class="btn btn-primary" style="background-color:salmon;">Detaylar</a></td>
+    <td><a href="/Fatura/FaturaDetay/@item.FaturaId" class="btn btn-info"> Kalem</a></td>
+
+</tr>
+    }
+
+</table>
+<a href="/Fatura/FaturaEkle" class="btn btn-danger">Yeni Fatura Girişi</a>
+<br />
+<br />
+
+<button type="button" class="btn btn-info" data-toggle="modal" data-target="#Modal1">Popup Penceresi</button>
+<div class="modal" id="Modal1">
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Hasan Hüseyin Şahin Popup deneme</h2>
+
+            </div>
+            <div class="modal-body">
+                <table class="table table-bordered">
+                    <tr>
+                        
+                        <th>Sıra No</th>
+                        <th>Tutar</th>
+                    </tr>
+                    @foreach (var x in Model)
+                    {
+                <tr>
+
+                    <td>@x.FaturaSıraNo</td>
+
+                    <td>@x.Toplam</td>
+                </tr>
+                    }
+
+                </table>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Tamam</button>
+            </div>
+        </div>
+    </div>
+</div>

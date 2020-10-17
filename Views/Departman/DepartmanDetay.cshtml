@@ -1,0 +1,39 @@
+﻿@model IEnumerable<TicariOtomasyon.Models.Classes.Personel>
+@{
+    ViewBag.Title = "DepartmanDetay";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h2>Departman Detay Sayfası</h2>
+<br />
+
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Departman Adı: @ViewBag.d</li>
+
+
+</ol>
+<table class="table table-hover">
+
+    <tr>
+        <th>Personel ID</th>
+        <th>Ad</th>
+        <th>Soyad</th>
+
+        <th>Satışlar</th>
+        <th>Sil</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+
+        <tr>
+            <td>@item.PersonelId</td>
+            <td>@item.PersonelAd</td>
+            <td>@item.PersonelSoyad</td>
+
+            <td><a href="/Departman/DepartmanPersonelSatis/@item.PersonelId" class="btn btn-success">Satışlar</a></td>
+            <td><a href="/Departman/DepartmanSil/@item.PersonelId"></a></td>
+        </tr>
+    }
+
+</table>

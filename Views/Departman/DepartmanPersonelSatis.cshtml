@@ -1,0 +1,41 @@
+﻿@model IEnumerable<TicariOtomasyon.Models.Classes.SatisHareket>
+@{
+    ViewBag.Title = "DepartmanPersonelSatis";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h2>Departman Personel Satis</h2>
+<br />
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Personel Adı: @ViewBag.dpersonel</li>
+
+
+</ol>
+<table class="table table-condensed">
+
+    <tr>
+        <th>Satış ID</th>
+        <th>Ürün</th>
+        <th>Cari</th>
+        <th>Fiyat</th>
+        <th>Adet</th>
+        <th>Toplam</th>
+        <th>Tarih</th>
+        <th>Yazdır</th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+
+<tr>
+    <td>@item.SatisId</td>
+    <td>@item.Urunlers.UrunAd</td>
+    <td>@item.Caris.CariAd @item.Caris.CariSoyad</td>
+    <td>@item.Fiyat.ToString("N2")</td>
+    <td>@item.Adet</td>
+    <td>@item.ToplamTutar.ToString("N2")</td>
+    <td>@item.Tarih</td>
+    <td><a href="#" class="btn btn-default" style="background-color:darkcyan">Yazdır</a></td>
+</tr>
+    }
+</table>

@@ -1,0 +1,33 @@
+﻿@using TicariOtomasyon.Models.Classes
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Kategori>
+@{
+ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Kategori</h2>
+
+<table class="table table-bordered" style="margin-top:20px;">
+    <tr>
+        <th>ID</th>
+        <th>Kategori Adı</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.KategoriId</td>
+            <td>@item.KategoriAd</td>
+
+            <td><a href="/Kategori/Sil/@item.KategoriId" class="btn btn-danger">Sil</a></td>
+            <td><a href="/Kategori/KategoriGetir/@item.KategoriId" class="btn btn-primary">Güncelle</a></td>
+        </tr>
+    }
+
+</table>
+@*Sayfa değerine her tıkladığımda yeni bir sayfaya yonlendırecek.*@
+@Html.PagedListPager((IPagedList)Model,sayfa=>Url.Action("Index",new {sayfa }))
+<a href="/Kategori/KategoriEkle" class="btn btn-primary">Kategori Ekle</a>

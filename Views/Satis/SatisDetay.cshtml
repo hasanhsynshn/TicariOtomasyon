@@ -1,0 +1,42 @@
+﻿@model IEnumerable<TicariOtomasyon.Models.Classes.SatisHareket>
+
+@{
+    ViewBag.Title = "SatisDetay";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<br />
+<h2>Satış Detay</h2>
+<br />
+
+<table class="table table-condensed">
+
+    <tr>
+        <th>Satış ID</th>
+        <th>Ürün</th>
+        <th>Cari</th>
+        <th>Personel</th>
+        <th>Fiyat</th>
+        <th>Adet</th>
+        <th>Toplam</th>
+        <th>Tarih</th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+
+        <tr>
+            <td>@item.SatisId</td>
+            <td>@item.Urunlers.UrunAd</td>
+            <td>@item.Caris.CariAd @item.Caris.CariSoyad</td>
+            <td>@item.Personels.PersonelAd  @item.Personels.PersonelSoyad</td>
+            <td>@item.Fiyat</td>
+            <td>@item.Adet</td>
+            <td>@item.ToplamTutar</td>
+            <td>@item.Tarih</td>
+        </tr>
+    }
+</table>
+<button class="btn btn-primary">Yazdır</button>

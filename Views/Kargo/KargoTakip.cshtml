@@ -1,0 +1,24 @@
+﻿@model List<TicariOtomasyon.Models.Classes.KargoTakip>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<table class="table table-striped">
+    <tr>
+        <th>Açıklama</th>
+        <th>Tarih</th>
+      
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Aciklama</td>
+            <td>@item.Tarih</td>
+          
+        </tr>
+    }
+
+
+</table>
+

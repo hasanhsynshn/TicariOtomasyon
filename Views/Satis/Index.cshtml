@@ -1,0 +1,67 @@
+﻿@model List<TicariOtomasyon.Models.Classes.SatisHareket>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h2>Personeller</h2>
+<br />
+
+<table id="tbl1" class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Ürün</th>
+            <th>Cari</th>
+            <th>Personel</th>
+            <th>Adet</th>
+            <th>Fiyat</th>
+            <th>Toplam</th>
+            <th>Tarih</th>
+
+            <th>Güncelle</th>
+            <th>Detaylar</th>
+
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.SatisId </td>
+            <td>@item.Urunlers.UrunAd </td>
+            <td>@item.Caris.CariAd @item.Caris.CariSoyad </td>
+            <td>@item.Personels.PersonelAd @item.Personels.PersonelSoyad</td>
+            <td>@item.Adet </td>
+            <td>@item.Fiyat.ToString("N2") </td>
+            <th>@item.ToplamTutar.ToString("N2")</th>
+            <th>@item.Tarih</th>
+
+
+
+            <td><a href="/Satis/SatisGetir/@item.SatisId" class="btn btn-warning" style="color:white">Güncelle</a></td>
+            <td><a href="/Satis/SatisDetay/@item.SatisId" class="btn btn-primary" style="background-color:salmon;">Detaylar</a></td>
+
+        </tr>
+    }
+
+</table>
+<a href="/Personel/YeniSatis" class="btn btn-success">Yeni Satış Yap</a>
+
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+
+<script>
+
+$('#tbl1').dataTable({});
+
+</script>
